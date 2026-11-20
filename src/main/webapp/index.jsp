@@ -20,10 +20,10 @@
                 <h2>Функции системы</h2>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item list-group-item-primary">
-                        <a href="#">Студенческие группы</a>
+                        <a href="/persons/HelloStudentServlet">Студенты</a>
                     </li>
                     <li class="list-group-item list-group-item-info">
-                        <a href="#">Студенты</a>
+                        <a href="/persons/HelloGroupServlet">Студенческие группы</a>
                     </li>
                 </ul>
             </div>

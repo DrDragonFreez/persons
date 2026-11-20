@@ -17,14 +17,7 @@ public class GroupServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html; charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        PrintWriter writer = response.getWriter();
-        try {
-            writer.println("<h2>Привет GroupServlet (Студенческие группы)</h2>");
-        } finally {
-            writer.close();
-        }
+        request.getRequestDispatcher("/views/group.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
