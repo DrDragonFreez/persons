@@ -37,8 +37,16 @@
                                 <td>${group.getFaculty()}</td>
                                 <td>${group.getCourse()}</td>
                                 <td>${group.getEducationType()}</td>
-                                <td width="20"><a href="#" role="button" class="btn btn-outline-primary"><img alt="Ред." src="images/icon-edit.png" width="20"></a></td>
-                                <td width="20"><a href="#" role="button" class="btn btn-outline-primary"><img alt="Удалить" src="images/icon-delete.png" width="20"></a></td>
+                                <td width="20">
+                                    <a href='<c:url value="/editgroup?id=${group.getId()}" />' role="button" class="btn btn-outline-primary">
+                                        <img alt="Ред." src="images/icon-edit.png" width="20">
+                                    </a>
+                                </td>
+                                <td width="20">
+                                    <a href='<c:url value="/deletegroup?id=${group.getId()}" />' role="button" class="btn btn-outline-primary" onclick="return confirm('Удалить группу ${group.getName()}?')">
+                                        <img alt="Удалить" src="images/icon-delete.png" width="20">
+                                    </a>
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>

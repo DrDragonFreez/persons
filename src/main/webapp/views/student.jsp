@@ -38,8 +38,16 @@
                                 <td>${student.getFirstName()}</td>
                                 <td>${student.getGroupName()}</td>
                                 <td>${student.getPhone()}</td>
-                                <td width="20"><a href="#" role="button" class="btn btn-outline-primary"><img alt="Ред." src="images/icon-edit.png" width="20"></a></td>
-                                <td width="20"><a href="#" role="button" class="btn btn-outline-primary"><img alt="Удалить" src="images/icon-delete.png" width="20"></a></td>
+                                <td width="20">
+                                    <a href='<c:url value="/editstudent?id=${student.getId()}" />' role="button" class="btn btn-outline-primary">
+                                        <img alt="Ред." src="images/icon-edit.png" width="20">
+                                    </a>
+                                </td>
+                                <td width="20">
+                                    <a href='<c:url value="/deletestudent?id=${student.getId()}" />' role="button" class="btn btn-outline-primary" onclick="return confirm('Удалить студента ${student.getLastName()} ${student.getFirstName()}?')">
+                                        <img alt="Удалить" src="images/icon-delete.png" width="20">
+                                    </a>
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>
