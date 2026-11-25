@@ -66,7 +66,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="group" class="form-label">Группа</label>
-                        <select name="group" class="form-control" required>
+                        <select name="group_id" class="form-control" required>
                             <option value="">Выберите группу</option>
                             <c:forEach var="g" items="${groups}">
                                 <option value="${g.getId()}">${g.getName()}</option>

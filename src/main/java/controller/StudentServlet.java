@@ -45,6 +45,30 @@ public class StudentServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
+        StudentDbDAO dao = new StudentDbDAO();
+
+        // Получаем данные
+        String lastName = request.getParameter("lastName");
+        String firstName = request.getParameter("firstName");
+        String middleName = request.getParameter("middleName");
+        String birthDate = request.getParameter("birthDate");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        Long idGroup = Long.parseLong(request.getParameter("group_id"));
+
+        // Создаем объект (используем конструктор)
+        Student newStudent = new Student(lastName, firstName, middleName, birthDate, phone, email, null);
+        newStudent.setIdGroup(idGroup);
+
+        try {
+            Long index = dao.insert(newStudent);
+            System.out.println("Добавлен студент с ID: " + index);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
+
         doGet(request, response);
     }
 }
