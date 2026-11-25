@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ page import="domain.Group"%>
-<%
-    Group g1 = new Group(1L, "ИС-21", "Информатика", 2, "Бюджет");
-    Group g2 = new Group(2L, "ПИ-22", "Программирование", 2, "Контракт");
-    Group g3 = new Group(3L, "ЭК-20", "Экономика", 4, "Бюджет");
-    Group[] groups = new Group[]{g1, g2, g3};
-    pageContext.setAttribute("groups", groups);
-%>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>

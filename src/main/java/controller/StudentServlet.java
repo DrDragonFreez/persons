@@ -1,22 +1,46 @@
 package controller;
 
+import dao.ConnectionProperty;
+import dao.GroupDbDAO;
+import dao.StudentDbDAO;
+import domain.Group;
+import domain.Student;
+import exception.DAOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
-@WebServlet("/HelloStudentServlet")
+@WebServlet("/student")
 public class StudentServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+    ConnectionProperty prop;
 
-    public StudentServlet() {
+    public StudentServlet() throws IOException {
         super();
+        prop = new ConnectionProperty();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        StudentDbDAO daoStudent = new StudentDbDAO();
+        GroupDbDAO daoGroup = new GroupDbDAO();
+        try {
+            List<Student> students = daoStudent.findAll();
+            List<Group> groups = daoGroup.findAll();
+
+            // Привязываем объект группы к каждому студенту
+            for (Student s : students) {
+                s.setGroup(daoGroup.FindById(s.getIdGroup(), groups));
+            }
+
+            request.setAttribute("students", students);
+            request.setAttribute("groups", groups); // Для выпадающего списка в форме
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
         request.getRequestDispatcher("/views/student.jsp").forward(request, response);
     }
 

@@ -2,17 +2,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ page import="domain.Group"%>
 <%@ page import="domain.Student"%>
-<%
-    Group g1 = new Group(1L, "ИС-21", "Информатика", 2, "Бюджет");
-    Group g2 = new Group(2L, "ПИ-22", "Программирование", 2, "Контракт");
-    Group[] groups = new Group[]{g1, g2};
-    pageContext.setAttribute("groups", groups);
 
-    Student s1 = new Student(1L, "Иванов", "Иван", "Иванович", "2003-05-15", "+7-999-111-11-11", "ivan@mail.ru", 1L, g1);
-    Student s2 = new Student(2L, "Петров", "Петр", "Петрович", "2004-08-20", "+7-999-222-22-22", "petr@mail.ru", 2L, g2);
-    Student[] students = new Student[]{s1, s2};
-    pageContext.setAttribute("students", students);
-%>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
